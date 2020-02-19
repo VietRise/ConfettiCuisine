@@ -1,4 +1,5 @@
 const routeResponseMap = {
+    "/": "views/index.html",
     "/info": "<h1>Info Page</h1>",
     "/contact": "<h1>Contact Us</h1>",
     "/about": "<h1>Learn More About Us.</h1>",

@@ -3,6 +3,7 @@ const cities = require("cities");
 const test = require("./test");
 const Utils = require("./Utils");
 const Route = require("./Route");
+const fs = require("fs");
 
 // lesson 2
 let printNumber = arr => {
