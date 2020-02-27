@@ -5,7 +5,7 @@ const fs = require("fs"),
     contentTypes = require("./contentTypes");
 
 module.exports = {
-    getJSONString: obj => {
+    getJSONString: function(obj) {
         return JSON.stringify(obj, null, 2);
     },
 
@@ -19,5 +19,13 @@ module.exports = {
             }
             res.end(data);
         });   
+    },
+
+    logReqData: function(req) {
+        console.log(`params: ${this.getJSONString(req.params)}`);
+        console.log(`body: ${this.getJSONString(req.body)}`);
+        console.log(`url: ${this.getJSONString(req.url)}`);
+        console.log(`query: ${this.getJSONString(req.query)}`);
+        console.log(`method: ${this.getJSONString(req.method)}`);   
     }
 };
