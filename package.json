@@ -2,8 +2,9 @@
   "name": "confetticuisine",
   "version": "1.0.0",
   "description": "\"Web server application\"",
-  "main": "main.js",
+  "main": "main2.js",
   "scripts": {
+    "start": "nodemon main2.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,6 +19,8 @@
   "license": "MIT",
   "dependencies": {
     "cities": "^2.0.0",
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
     "http-status-codes": "^1.4.0"
   }
 }
