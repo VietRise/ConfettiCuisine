@@ -2,9 +2,9 @@
   "name": "confetticuisine",
   "version": "1.0.0",
   "description": "\"Web server application\"",
-  "main": "main2.js",
+  "main": "main_final_2.js",
   "scripts": {
-    "start": "nodemon main2.js",
+    "start": "nodemon main_final_2.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,6 +21,8 @@
     "cities": "^2.0.0",
     "ejs": "^3.0.1",
     "express": "^4.17.1",
-    "http-status-codes": "^1.4.0"
+    "express-ejs-layouts": "^2.5.0",
+    "http-status-codes": "^1.4.0",
+    "mongodb": "^3.5.4"
   }
 }

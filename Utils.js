@@ -22,10 +22,16 @@ module.exports = {
     },
 
     logReqData: function(req) {
+        console.log("-----------------------------------------");
         console.log(`params: ${this.getJSONString(req.params)}`);
         console.log(`body: ${this.getJSONString(req.body)}`);
         console.log(`url: ${this.getJSONString(req.url)}`);
         console.log(`query: ${this.getJSONString(req.query)}`);
         console.log(`method: ${this.getJSONString(req.method)}`);   
+    },
+
+    logError: function(error) {
+        console.log("Error -------------------------------------");
+        console.error(error.stack);
     }
 };
