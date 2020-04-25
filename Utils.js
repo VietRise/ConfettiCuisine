@@ -21,8 +21,16 @@ module.exports = {
         });   
     },
 
+    logConsole: function(data) {
+        console.log(data);
+    },
+
+    logConsoleObj: function(obj) {
+        console.log(this.getJSONString(obj));
+    },
+
     logReqData: function(req) {
-        console.log("-----------------------------------------");
+        console.log("Req Data ----------------------------------");
         console.log(`params: ${this.getJSONString(req.params)}`);
         console.log(`body: ${this.getJSONString(req.body)}`);
         console.log(`url: ${this.getJSONString(req.url)}`);

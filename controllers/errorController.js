@@ -6,16 +6,16 @@ exports.logErrors = (error, req, res, next) => {
     next(error);
 };
 
-exports.pageNotFoundError = (req, res) => {
+exports.respondNoResourceFound = (req, res) => {
     let errorCode = httpStatus.NOT_FOUND;
     res.status(errorCode);
-    res.render("error");
+    res.send(`${errorCode} | The page does not exist!`);
 };
 
-exports.internalServerError = (error, req, res, next) => {
-    utils.logError(error);
+exports.respondInternalError = (error, req, res, next) => {
+    utils.logConsole(`ERROR occurred: ${error.stack}`);
     let errorCode = httpStatus.INTERNAL_SERVER_ERROR;
-    res.status(error);
+    res.status(errorCode);
     res.send(`${errorCode} | Sorry, our application is experimencing a problem!`);
 };
 

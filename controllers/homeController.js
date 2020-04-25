@@ -29,7 +29,7 @@ module.exports = {
         res.render("index", {name: paramsName});
     },
 
-    showHome: (req, res) => {
+    index: (req, res) => {
         utils.logReqData(req);
         res.render("index");
     },
@@ -39,7 +39,7 @@ module.exports = {
         res.render("courses", {offeredCourses: courses});
     },
 
-    showSignUp: (req, res) => {
+    contact: (req, res) => {
         utils.logReqData(req);
         res.render("contact");
     },
