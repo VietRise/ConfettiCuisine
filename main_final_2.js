@@ -43,7 +43,7 @@ const mongoose = require("mongoose");
 const Subscriber = require("./models/subscriber");
 
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://localhost:27017/recipe_db", {useNewUrlParser: true});
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/recipe_db", {useNewUrlParser: true});
 const db = mongoose.connection;
 /*
 // Method 1 of instantiating new object
@@ -100,6 +100,9 @@ app.set("port", process.env.PORT || port);
 
 // Set up application to use ejs
 app.set("view engine", "ejs");
+
+// Set token
+app.set("token", process.env.TOKEN || "recipeT0k3n");
 
 // Preprocess
 app.use((req, res, next) => {
@@ -164,6 +167,6 @@ app.use((req, res, next) => {
 app.use("/", router);
 
 // Express application listen on this port 
-app.listen(port, () => {
-    console.log(`The Express.js server has started and is listening ➥ on port number: ${app.get("port")}`);
+app.listen(app.get("port"), () => {
+    console.log(`The Express.js server has started and is listening on port number: ${app.get("port")}`);
 });

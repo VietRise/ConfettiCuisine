@@ -47,6 +47,7 @@
 		<% if(loggedIn) { %>
 			<div class="bubble logged-in">
 				Logged in as <a href="<%= `/users/${currentUser._id}` %>"><%= currentUser.fullName %></a>
+				<div id="apiToken" data-token="<%= currentUser.apiToken %>" style="display: none;"></div>
 			</div>
 
 			<div class="log-out">

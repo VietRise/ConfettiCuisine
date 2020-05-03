@@ -3,6 +3,7 @@
 const Subscriber = require("./subscriber");
 const utils = require("../utils");
 const passportLocalMongoose = require("passport-local-mongoose");
+const randToken = require("rand-token");
 const mongoose = require("mongoose"),
     {Schema} = mongoose;
 const bcrypt = require("bcrypt");
@@ -30,6 +31,9 @@ const userSchema = new Schema(
         min: [10000, "Zip code too short"],
         max: 99999
     },
+    apiToken: {
+        type: String
+    },
     courses: [{type: Schema.Types.ObjectId, ref: "Courses"}],
     subscribedAccount: {
         type: Schema.Types.ObjectId,
@@ -47,6 +51,12 @@ userSchema.plugin(passportLocalMongoose, {
 
 userSchema.pre("save", function(next) {
     let user = this;
+    // Generate token
+    if (user.apiToken == null) {
+        user.apiToken = randToken.generate(16);
+    } 
+
+    // Assigne subscribed account
     if (user.subscribedAccount === undefined) {
         Subscriber.findOne({
             email: user.email
@@ -59,7 +69,10 @@ userSchema.pre("save", function(next) {
             utils.logConsole(`Error in connecting subscriber: ${error.message}`);
             next(error);
         });
+    } else {
+        next();
     }
+    
     /*
     bcrypt.hash(user.password, 10)
         .then(hash => {

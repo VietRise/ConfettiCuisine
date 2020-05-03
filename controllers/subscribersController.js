@@ -39,11 +39,7 @@ module.exports = {
       },
 
     indexView: (req, res) => {
-      if (req.query.format === "json") {
-        res.json(res.locals.subscribers);
-      } else {
         res.render("subscribers/index");
-      }
     },
 
     new: (req, res) => {
